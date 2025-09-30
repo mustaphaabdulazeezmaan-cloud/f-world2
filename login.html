@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>F-world</title>
+        <style>
+            body{
+                margin: 0;
+                background-color: #080836;
+            }
+            .con{
+                margin: 5% 10% 0% 10%;
+                width: 80%;
+                background-color: #ffffff; 
+                border-radius: 15px;
+                height: 400px;
+                padding-top: 70px;
+                padding-bottom: 20px;
+                display: flex;
+            }
+            #ls{
+                width: 60%;
+            }
+            #rs{
+                width: 40%;
+            }
+            #f-world{
+                color: #22aaaa;
+                font-size: 50px;
+                font-weight: bold;
+                font-style: italic;
+                margin-left: 20%;
+            }
+            .enter{
+                padding: 3% 40% 3% 3%;
+                border-radius: 20px;
+                margin-left: 10%;
+                margin-top: 2%;
+                border: 2px solid #aaaaaa;
+            }
+            #cb{
+                margin-left: 11%;
+                margin-top: 2%;
+                margin-right: 1%;
+                transform: scale(1.5);
+                cursor: pointer;
+            }
+            .grey{
+                color: #666666;
+            }
+            button{
+                background-color: #1c84a9;
+                padding: 3% 31%;
+                border: none;
+                border-radius: 50px;
+                margin-left: 10%;
+                margin-top: 3%;
+                cursor: pointer;
+                color: white;
+            }
+            button:hover{
+                background-color: #22aaaa;
+            }
+            #forgot{
+                width: 70%;
+                display: block;
+                text-align: center;
+                margin-left: 10%;
+            }
+            a{
+                text-decoration: none;
+                color: #666666;
+            }
+            a:hover{
+                color: #aaaaaa;
+            }
+            p{
+                height: 10px;
+            }
+            @media screen and (max-width:600px){
+                #ls{
+                    width: 100%;
+                }
+                button{
+                    background-color: #1c84a9;
+                    padding: 3% 36%;
+                    border: none;
+                    border-radius: 50px;
+                    margin-left: 10%;
+                    margin-top: 3%;
+                    cursor: pointer;
+                    color: white;
+                }
+                #forgot{
+                    width: 80%;
+                    display: block;
+                    text-align: center;
+                    margin-left: 10%;
+                    margin-right: 20%;
+                }
+                #rs{
+                    display: none;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <div class="con">
+            <div id="ls">
+                <span id="f-world">F-WORLD</span>
+                <form>
+                    <input type="text" placeholder="Enter Username" class="enter" required><br>
+                    <input type="password" placeholder="Password" class="enter" required ><br>
+                    <input type="checkbox" id="cb"><span class="grey">Remember Me</span><br>
+                    <button type="submit">Login</button><br>
+                    <span id="forgot">
+                        <hr>
+                        <p><a href="#">Forgot Password?</a></p>
+                        <a href="#">Create an Account</a>
+                    </span>
+                </form>
+            </div>
+            <div id="rs">
+                <img src="images/login.jpg" width="100%">
+            </div>
+        </div>      
+    </body>
+</html>
