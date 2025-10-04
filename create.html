@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Create Account</title>
+        <style>
+            * {
+                box-sizing: border-box;
+            }
+
+            body {
+                margin: 0;
+                background-color: #080836;
+            }
+
+            .con {
+                width: 40%;
+                margin: 5% 30% 0% 30%;
+                background-color: #ffffff;
+                border-radius: 15px;
+                display: flex;
+                overflow: hidden;
+                box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            }
+            form{
+                margin: 5%;
+                width: 95%;
+                text-align: center;
+            }
+            button {
+                background-color: #1c84a9;
+                color: white;
+                padding: 12px;
+                border: none;
+                border-radius: 20px;
+                width: 50%;
+                font-size: 16px;
+                font-weight: bold;
+                cursor: pointer;
+                margin-top: 15px;
+                transition: background-color 0.3s ease;
+            }
+
+            button:hover {
+                background-color: #22aaaa;
+            }
+            .input-row {
+                display: flex;
+                gap: 10px;
+            }
+            .input-row input {
+                flex: 1;
+            }
+            .in {
+                padding: 14px;
+                border-radius: 25px;
+                border: 2px solid #aaaaaa;
+                margin-bottom: 15px;
+                font-size: 16px;
+            }
+            .in2 {
+                width: 100%;
+                padding: 14px;
+                border-radius: 25px;
+                border: 2px solid #aaaaaa;
+                margin-bottom: 15px;
+                font-size: 16px;
+            }
+            form p{
+                color: #666666;
+            }
+            form a{
+                text-decoration: none;
+                color: #666666;
+                cursor: pointer;
+            }
+            form a:hover{
+                color: #1c84a9;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="con">
+            <form>
+                <h2>Create Account</h2>
+                <div class="input-row">
+                    <input type="text" placeholder="First Name" required class="in">
+                    <input type="text" placeholder="Last Name" required class="in">
+                </div>
+                <div class="input-row">
+                    <input type="email" placeholder="Email" required class="in">
+                    <input type="text" placeholder="Username" required class="in">
+                </div>
+                <input type="password" placeholder="Password" required class="in2">
+                <input type="password" placeholder="Confirm Password" required class="in2">
+                <button type="submit">Create Account</button>
+                <p>By creating this account you agree to our Terms & conditions and privacy policy</p>
+                <a href="index.html">Sign in</a>
+            </form>
+        </div>
+    </body>
+</html>
