@@ -5,18 +5,15 @@
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Create Account</title>
         <style>
-            * {
-                box-sizing: border-box;
-            }
-
+            * { box-sizing: border-box; }
             body {
                 margin: 0;
                 background-color: #080836;
+                font-family: Arial, sans-serif;
             }
-
             .con {
                 width: 40%;
-                margin: 1% 30% 1% 30%;
+                margin: 1% 30%;
                 background-color: #ffffff;
                 border-radius: 15px;
                 display: flex;
@@ -32,7 +29,7 @@
                 text-align: center;
                 margin-bottom: -10px;
             }
-            form{
+            form {
                 margin: 5%;
                 width: 95%;
                 text-align: center;
@@ -50,113 +47,104 @@
                 margin-top: 15px;
                 transition: background-color 0.3s ease;
             }
-
-            button:hover {
-                background-color: #22aaaa;
-            }
-            .input-row {
-                display: flex;
-                gap: 10px;
-            }
-            .input-row input {
-                flex: 1;
-            }
-            .in {
+            button:hover { background-color: #22aaaa; }
+            .input-row { display: flex; gap: 10px; }
+            .input-row input { flex: 1; }
+            .in, .in2 {
                 padding: 14px;
                 border-radius: 25px;
                 border: 2px solid #aaaaaa;
                 margin-bottom: 15px;
                 font-size: 16px;
-            }
-            .in2 {
                 width: 100%;
-                padding: 14px;
-                border-radius: 25px;
-                border: 2px solid #aaaaaa;
-                margin-bottom: 15px;
-                font-size: 16px;
             }
-            form p{
-                color: #666666;
-            }
-            form a{
+            form p { color: #666666; }
+            form a {
                 text-decoration: none;
                 color: #666666;
                 cursor: pointer;
             }
-            form a:hover{
-                color: #1c84a9;
-            }
+            form a:hover { color: #1c84a9; }
 
-
-            @media screen and (max-width: 1024px) {
-                .in{
-                    width: 80%;
-                }
-                form p{
-                    font-size: 20px;
-                }
-                form a{
-                    font-size: 20px;
-                }
-            }
             @media screen and (max-width: 912px) {
-                .con {
-                    width: 80%;
-                    margin: 5% 10%;
-                }
-                #f-world {
-                    font-size: 36px;
-                }
-                .in{
-                    width: 90%;
-                }
-                button {
-                    font-size: 15px;
-                    padding: 12px;
-                    width: 60%;
-                }
-                form p{
-                    font-size: 16px;
-                }
-                form a{
-                    font-size: 16px;
-                }
+            .con { width: 80%; margin: 5% 10%; }
+            #f-world { font-size: 36px; }
+            button { width: 60%; }
             }
-
             @media screen and (max-width: 480px) {
-                #f-world {
-                    font-size: 30px;
-                }
-                #re{
-                    font-size: 20px;
-                }
-                .in {
-                    width: 90%;
-                }
-                
+            #f-world { font-size: 30px; }
+            .in, .in2 { width: 90%; }
             }
         </style>
     </head>
     <body>
         <div class="con">
-            <form>
+            <form id="createForm">
                 <span id="f-world">F-WORLD</span>
                 <h2>Create Account</h2>
+
                 <div class="input-row">
-                    <input type="text" placeholder="First Name" required class="in">
-                    <input type="text" placeholder="Last Name" required class="in">
+                    <input type="text" id="firstName" placeholder="First Name" required class="in">
+                    <input type="text" id="lastName" placeholder="Last Name" required class="in">
                 </div>
                 <div class="input-row">
-                    <input type="email" placeholder="Email" required class="in">
-                    <input type="text" placeholder="Username" required class="in">
+                    <input type="email" id="email" placeholder="Email" required class="in">
+                    <input type="text" id="username" placeholder="Username" required class="in">
                 </div>
-                <input type="password" placeholder="Password" required class="in2">
-                <input type="password" placeholder="Confirm Password" required class="in2">
+                <input type="password" id="password" placeholder="Password" required class="in2">
+                <input type="password" id="confirmPassword" placeholder="Confirm Password" required class="in2">
+
                 <button type="submit">Create Account</button>
-                <p>By creating this account you agree to our Terms & conditions and privacy policy</p>
+                <p>By creating this account you agree to our Terms & Conditions and Privacy Policy</p>
                 <a href="index.html">Sign in</a>
             </form>
         </div>
+
+
+
+        <script>
+            document.getElementById('createForm').addEventListener('submit', function(event) {
+                event.preventDefault(); // Prevent page reload
+
+                const firstName = document.getElementById('firstName').value.trim();
+                const lastName = document.getElementById('lastName').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const username = document.getElementById('username').value.trim();
+                const password = document.getElementById('password').value;
+                const confirmPassword = document.getElementById('confirmPassword').value;
+
+                // Basic validation
+                if (password !== confirmPassword) {
+                    alert("Passwords do not match!");
+                    return;
+                }
+
+                if (password.length < 8) {
+                    alert("Password must be at least 8 characters long.");
+                    return;
+                }
+
+                // Save to localStorage
+                const userData = {
+                    firstName,
+                    lastName,
+                    email,
+                    username,
+                    password
+                };
+
+                // Check if user already exists
+                const existingUser = localStorage.getItem(username);
+                if (existingUser) {
+                    alert("Username already exists! Please choose another one.");
+                    return;
+                }
+
+                localStorage.setItem(username, JSON.stringify(userData));
+
+                alert("Account created successfully!");
+                window.location.href = "index.html"; // Redirect to sign-in page
+            });
+        </script>
     </body>
 </html>

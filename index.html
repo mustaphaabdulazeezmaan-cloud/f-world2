@@ -3,15 +3,15 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>F-world</title>
-        <style>
-            * {
-                box-sizing: border-box;
+        <title>F-world Login</title>
+          <style>
+            * { 
+                box-sizing: border-box; 
             }
-
-            body {
-                margin: 0;
-                background-color: #080836;
+            body { 
+                margin: 0; 
+                background-color: #080836; 
+                font-family: Arial, sans-serif; 
             }
 
             .con {
@@ -24,13 +24,11 @@
                 box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
             }
 
-            #ls{
-                width: 55%;
-                padding: 50px 60px;
+            #ls { 
+                width: 55%; 
+                padding: 50px 60px; 
             }
-            #rs{
-                width: 45%;
-            }
+            #rs { width: 45%; }
 
             #f-world {
                 color: #1c84a9;
@@ -50,15 +48,16 @@
                 margin-bottom: 15px;
                 font-size: 16px;
             }
+
             #cb {
                 margin-right: 8px;
                 transform: scale(1.3);
                 cursor: pointer;
             }
 
-            .grey {
-                color: #666666;
-                font-size: 14px;
+            .grey { 
+                color: #666666; 
+                font-size: 14px; 
             }
 
             button {
@@ -75,9 +74,7 @@
                 transition: background-color 0.3s ease;
             }
 
-            button:hover {
-                background-color: #22aaaa;
-            }
+            button:hover { background-color: #22aaaa; }
 
             #forgot {
                 margin-top: 25px;
@@ -90,9 +87,7 @@
                 font-size: 14px;
             }
 
-            a:hover {
-                color: #1c84a9;
-            }
+            a:hover { color: #1c84a9; }
 
             #rs img {
                 width: 100%;
@@ -101,44 +96,17 @@
             }
 
             @media screen and (max-width: 768px) {
-                .con {
-                    flex-direction: column;
-                    margin-top: 10%;
-                }
-
-                #ls {
-                    width: 100%;
-                    padding: 40px 20px;
-                }
-
-                #f-world {
-                    font-size: 36px;
-                }
-
-                #rs {
-                    display: none;
-                }
-
+                .con { flex-direction: column; margin-top: 10%; }
+                #ls { width: 100%; padding: 40px 20px; }
+                #f-world { font-size: 36px; }
+                #rs { display: none; }
             }
 
             @media screen and (max-width: 480px) {
-                #f-world {
-                    font-size: 30px;
-                }
-
-                .enter {
-                    font-size: 14px;
-                    padding: 12px;
-                }
-
-                button {
-                    font-size: 15px;
-                    padding: 12px;
-                }
-
-                #rs {
-                    display: none;
-                }
+                #f-world { font-size: 30px; }
+                .enter { font-size: 14px; padding: 12px; }
+                button { font-size: 15px; padding: 12px; }
+                #rs { display: none; }
             }
         </style>
     </head>
@@ -146,9 +114,9 @@
         <div class="con">
             <div id="ls">
                 <span id="f-world">F-WORLD</span>
-                <form>
-                    <input type="text" placeholder="Enter Username" class="enter" required>
-                    <input type="password" placeholder="Password" class="enter" required>
+                <form id="loginForm">
+                    <input type="text" id="username" placeholder="Enter Username" class="enter">
+                    <input type="password" id="password" placeholder="Password" class="enter">
                     <div style="margin-bottom: 10px;">
                         <input type="checkbox" id="cb"><span class="grey">Remember Me</span>
                     </div>
@@ -164,5 +132,44 @@
                 <img src="images/login.jpg" alt="Login illustration" width="100%">
             </div>
         </div>
+
+
+
+        <script>
+            document.getElementById("loginForm").addEventListener("submit", function(event) {
+                event.preventDefault();
+
+                const username = document.getElementById("username").value.trim();
+                const password = document.getElementById("password").value;
+
+                if (!username || !password) {
+                    alert("Please fill in both fields.");
+                    return;
+                }
+                else if (password.length < 8) {
+                    alert("Password must be at least 8 characters long.");
+                    return;
+                }
+                else{
+                    // Get stored user data
+                    const storedUser = localStorage.getItem(username);
+
+                    if (!storedUser) {
+                        alert("No account found with this username.");
+                        return;
+                    }
+
+                    const userData = JSON.parse(storedUser);
+
+                    if (userData.password === password) {
+                        alert("Login successful!");
+                        window.location.href = "https://valortech.com.ng/";
+                    } else {
+                        alert("Incorrect password. Please try again.");
+                    }
+                
+                }
+            });  
+        </script>
     </body>
 </html>
